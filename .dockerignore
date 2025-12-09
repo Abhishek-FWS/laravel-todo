@@ -9,6 +9,5 @@ storage/logs/*
 .idea
 .vscode
 Dockerfile
-docker/
 public/build
 public/hot
