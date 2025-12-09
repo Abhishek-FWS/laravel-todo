@@ -62,6 +62,9 @@ COPY --from=build /app/public/build ./public/build
 # Setup Nginx
 COPY docker/nginx.conf /etc/nginx/http.d/default.conf
 
+# Setup PHP-FPM
+COPY docker/php-fpm.conf /usr/local/etc/php-fpm.d/zzz-custom.conf
+
 # Setup Entrypoint
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
