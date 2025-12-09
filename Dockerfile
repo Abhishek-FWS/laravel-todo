@@ -63,6 +63,7 @@ COPY --from=build /app/public/build ./public/build
 COPY docker/nginx.conf /etc/nginx/http.d/default.conf
 
 # Setup PHP-FPM
+RUN rm -rf /usr/local/etc/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 COPY docker/php-fpm.conf /usr/local/etc/php-fpm.d/zzz-custom.conf
 
 # Setup Entrypoint
