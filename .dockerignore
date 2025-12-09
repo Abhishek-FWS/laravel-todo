@@ -1,0 +1,14 @@
+.git
+.gitignore
+.env
+*.md
+node_modules
+vendor
+storage/*.key
+storage/logs/*
+.idea
+.vscode
+Dockerfile
+docker/
+public/build
+public/hot
