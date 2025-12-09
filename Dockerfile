@@ -47,10 +47,14 @@ WORKDIR /var/www/html
 COPY composer.json composer.lock ./
 
 # Install dependencies
-RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
+# Install dependencies without running scripts (depends on artisan which isn't copied yet)
+RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader --no-scripts
 
 # Copy application files
 COPY . .
+
+# Run composer scripts (now that artisan is copied)
+RUN composer dump-autoload --optimize
 
 # Copy built assets from build stage
 COPY --from=build /app/public/build ./public/build
